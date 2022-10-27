@@ -47,9 +47,7 @@ class CapiAbbigliamento {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  function createCards() {
-    let box = document.querySelector(".box-card");
-    let cardDisplay = document.createElement("ul");
+  function createCards(): any {
     let capo = negozio.then((capo) => {
       let card = new CapiAbbigliamento(
         capo.id,
@@ -64,15 +62,20 @@ document.addEventListener("DOMContentLoaded", () => {
         capo.disponiblile,
         capo.saldo
       );
-      return card;
+      console.log(card);
     });
+    return capo;
   }
 
-  function displayCards(obj: object) {
+  function displayCards(arr: Array<object>) {
+    // createCards();
     let box = document.querySelector(".box-card");
 
     let cardDisplay = document.createElement("ul");
     // arr.forEach((i) => (cardDisplay.innerHTML = `<li>${i}</li>`));
     box?.appendChild(cardDisplay);
+    arr.forEach((i) => (cardDisplay.innerHTML = `<li>${i}</li>`));
   }
+
+  displayCards(createCards());
 });

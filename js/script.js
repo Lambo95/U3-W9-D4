@@ -22,17 +22,19 @@ class CapiAbbigliamento {
 }
 document.addEventListener("DOMContentLoaded", () => {
     function createCards() {
-        let box = document.querySelector(".box-card");
-        let cardDisplay = document.createElement("ul");
         let capo = negozio.then((capo) => {
             let card = new CapiAbbigliamento(capo.id, capo.codprod, capo.collezione, capo.capo, capo.modello, capo.quantita, capo.colore, capo.prezzoivainclusa, capo.prezzoivaesclusa, capo.disponiblile, capo.saldo);
-            return card;
+            console.log(card);
         });
+        return capo;
     }
-    function displayCards(obj) {
+    function displayCards(arr) {
+        // createCards();
         let box = document.querySelector(".box-card");
         let cardDisplay = document.createElement("ul");
         // arr.forEach((i) => (cardDisplay.innerHTML = `<li>${i}</li>`));
         box === null || box === void 0 ? void 0 : box.appendChild(cardDisplay);
+        arr.forEach((i) => (cardDisplay.innerHTML = `<li>${i}</li>`));
     }
+    displayCards(createCards());
 });
